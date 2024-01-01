@@ -9,3 +9,10 @@
 body {
   background: linear-gradient(to right, rgb(0, 153, 255), rgb(116, 176, 219));
 }
+
+main {
+  display: flex;
+  height: 93vh;
+  align-items: center;
+  justify-content: center;
+}

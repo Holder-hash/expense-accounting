@@ -1,0 +1,14 @@
+.expanse-panel__body {
+    width: 800px;
+    height: 500px;
+    background: linear-gradient(to bottom, rgb(0, 153, 255), rgb(0, 149, 255));
+    border-radius: 15px;
+    .expanse-panel__linse {
+        width: 100%;
+        height: inherit;
+        background: rgba(255, 255, 255, 0.397);
+        box-shadow: 0 0 100px white;
+        border: 1px solid rgba(255, 255, 255, 0.397);
+        border-radius: 15px;
+    }
+}
