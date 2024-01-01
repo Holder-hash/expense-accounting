@@ -1,9 +1,12 @@
 .expanse-panel__body {
-    width: 800px;
-    height: 500px;
+    width: 1000px;
+    height: 550px;
     background: linear-gradient(to bottom, rgb(0, 153, 255), rgb(0, 149, 255));
     border-radius: 15px;
     .expanse-panel__linse {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
         width: 100%;
         height: inherit;
         background: rgba(255, 255, 255, 0.397);
