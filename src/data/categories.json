@@ -3,5 +3,10 @@
         "color": "green",
         "icon": "shopping_cart",
         "type": "default"
+    },
+    "question": {
+        "color": "red",
+        "icon": "question_mark",
+        "type": "default"
     }
 }

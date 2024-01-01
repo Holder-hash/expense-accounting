@@ -8,10 +8,14 @@ const ExpenseInput = () => {
                 <input type="number" className='expanse-input__expense-inp'/>
 
                 <div className="expanse-input__categories">
+                    
                     {Object.keys(categories).map((key, index) => {
+                        const category = categories[key];
                         return (
-                            <div key={index}>
-                                <p>{key}: {index}</p>
+                            <div key={index} style={{background: category.color}}>
+                                <span class="material-symbols-outlined">
+                                    {category.icon}
+                                </span>
                             </div>
                         )
                     })}
