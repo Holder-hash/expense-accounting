@@ -1,12 +1,12 @@
 {
     "purchases": {
-        "category": "purchases",
+        "category": "Покупки",
         "color": "green",
         "icon": "shopping_cart",
         "type": "default"
     },
     "question": {
-        "category": "question",
+        "category": "Другое",
         "color": "red",
         "icon": "question_mark",
         "type": "default"
