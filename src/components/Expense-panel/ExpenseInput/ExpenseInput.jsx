@@ -1,16 +1,14 @@
 import './ExpenseInput.scss';
 import categories from '../../../data/categories.json';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 
 const ExpenseInput = (props) => {
 
     const expenseValue = useRef(null);
     const [expenseCategor, setExpenseCategory] = useState(null);
-
-    // setExpenseCategory(category)
     
     function CategoryChangeHandler(category) {
-        storageLabels.push(category)
+        setExpenseCategory(() => category);
     }
 
     let storageLabels = JSON.parse(localStorage.getItem('userExpenseStorage')).labels
@@ -18,25 +16,17 @@ const ExpenseInput = (props) => {
 
     const expenseSubmit = (e) => {
         e.preventDefault();
-        if (expenseValue.current.value) {
+        storageLabels.push(expenseCategor);
+        
+        if (expenseValue.current.value && expenseCategor) {
             storageData.push(expenseValue.current.value)
-            // props.setUserExpenseState(prevState => {
-            //     return {
-            //         ...prevState,
-            //         // labels: expenseCategor,
-            //         // data: expenseValue.current.value,
-            //         labels: [...prevState.labels, expenseCategor],
-            //         data: [...prevState.data, expenseValue.current.value]
-            //     }
-            // });
+
             localStorage.setItem('userExpenseStorage', JSON.stringify({
                 labels: storageLabels,
                 data: storageData
             }));
-            console.log(storageLabels);
         }
     }
-    console.log(JSON.parse(localStorage.getItem('userExpenseStorage')));
 
     const clearBtnHandler = (e) => {
         e.preventDefault();
