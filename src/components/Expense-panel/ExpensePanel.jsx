@@ -1,13 +1,15 @@
 import './Expense-panel.scss';
 import ExpenseInput from './ExpenseInput/ExpenseInput.jsx';
-import ExpenseGraph from './ExpenseGraph/ExpenseGraph.jsx'
+import ExpenseGraph from './ExpenseGraph/ExpenseGraph.jsx';
+import {useState, useEffect} from 'react';
 
-const ExpensePanel = () => {
+const ExpensePanel = (props) => {
+
     return (
         <div className='expanse-panel__body'>
             <div className='expanse-panel__linse'>
                 <ExpenseGraph />
-                <ExpenseInput />
+                <ExpenseInput setUserExpenseState={props.setUserExpenseState}/>
             </div>
         </div>
     )

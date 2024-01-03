@@ -1,10 +1,12 @@
 {
     "purchases": {
+        "category": "purchases",
         "color": "green",
         "icon": "shopping_cart",
         "type": "default"
     },
     "question": {
+        "category": "question",
         "color": "red",
         "icon": "question_mark",
         "type": "default"
