@@ -1,31 +1,42 @@
 import './ExpenseInput.scss';
 import categories from '../../../data/categories.json';
-import {useRef, useState, useEffect} from 'react';
+import { useRef, useState } from 'react';
 
 const ExpenseInput = (props) => {
 
     const expenseValue = useRef(null);
     const [expenseCategor, setExpenseCategory] = useState(null);
 
+    // setExpenseCategory(category)
+    
     function CategoryChangeHandler(category) {
-        setExpenseCategory(category)
+        storageLabels.push(category)
     }
+
+    let storageLabels = JSON.parse(localStorage.getItem('userExpenseStorage')).labels
+    let storageData = JSON.parse(localStorage.getItem('userExpenseStorage')).data
 
     const expenseSubmit = (e) => {
         e.preventDefault();
-        if (expenseValue.current.value && expenseCategor) {
-            props.setUserExpenseState(prevState => {
-                return {
-                    ...prevState,
-                    // labels: expenseCategor,
-                    // data: expenseValue.current.value,
-                    labels: [...prevState.labels, expenseCategor],
-                    data: [...prevState.data, expenseValue.current.value]
-                }
-            });
-            localStorage.setItem('userExpenseStorage', JSON.stringify(props.userExpenseState));
+        if (expenseValue.current.value) {
+            storageData.push(expenseValue.current.value)
+            // props.setUserExpenseState(prevState => {
+            //     return {
+            //         ...prevState,
+            //         // labels: expenseCategor,
+            //         // data: expenseValue.current.value,
+            //         labels: [...prevState.labels, expenseCategor],
+            //         data: [...prevState.data, expenseValue.current.value]
+            //     }
+            // });
+            localStorage.setItem('userExpenseStorage', JSON.stringify({
+                labels: storageLabels,
+                data: storageData
+            }));
+            console.log(storageLabels);
         }
     }
+    console.log(JSON.parse(localStorage.getItem('userExpenseStorage')));
 
     const clearBtnHandler = (e) => {
         e.preventDefault();

@@ -1,8 +1,8 @@
 import './ExpenseGraph.scss';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Pie } from "react-chartjs-2";
-import {pieChart} from '../../../data/charts.js';
-import {useState, useEffect} from 'react';
+import { pieChart } from '../../../data/charts.js';
+import { useEffect } from 'react';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -13,7 +13,6 @@ const ExpenseGraph = (props) => {
     useEffect(() => {
         pieChart.labels = JSON.parse(storageData).labels
         pieChart.data = JSON.parse(storageData).data
-        console.log(pieChart);
     }, [storageData])
 
     return (

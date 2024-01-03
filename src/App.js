@@ -1,7 +1,7 @@
 import './App.css';
 import Header from './components/Header/Header.jsx';
 import ExpensePanel from './components/Expense-panel/ExpensePanel.jsx';
-import {useState, useEffect} from 'react';
+import { useState } from 'react';
 
 function App() {
   
@@ -9,8 +9,6 @@ function App() {
     labels: [],
     data: []
   })
-  
-
   
   if (!localStorage.getItem('userExpenseStorage')) {
     localStorage.setItem('userExpenseStorage', JSON.stringify(userExpenseState))

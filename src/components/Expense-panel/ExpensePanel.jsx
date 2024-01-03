@@ -1,7 +1,6 @@
 import './Expense-panel.scss';
 import ExpenseInput from './ExpenseInput/ExpenseInput.jsx';
 import ExpenseGraph from './ExpenseGraph/ExpenseGraph.jsx';
-import {useState, useEffect} from 'react';
 
 const ExpensePanel = (props) => {
 
