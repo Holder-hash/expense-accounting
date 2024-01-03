@@ -9,7 +9,7 @@ const ExpensePanel = (props) => {
         <div className='expanse-panel__body'>
             <div className='expanse-panel__linse'>
                 <ExpenseGraph />
-                <ExpenseInput setUserExpenseState={props.setUserExpenseState}/>
+                <ExpenseInput setUserExpenseState={props.setUserExpenseState} userExpenseState={props.userExpenseState}/>
             </div>
         </div>
     )

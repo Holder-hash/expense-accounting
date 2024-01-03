@@ -1,6 +1,6 @@
 import './ExpenseInput.scss';
 import categories from '../../../data/categories.json';
-import {useRef, useState} from 'react';
+import {useRef, useState, useEffect} from 'react';
 
 const ExpenseInput = (props) => {
 
@@ -22,8 +22,8 @@ const ExpenseInput = (props) => {
                     labels: [...prevState.labels, expenseCategor],
                     data: [...prevState.data, expenseValue.current.value]
                 }
-
             });
+            localStorage.setItem('userExpenseStorage', JSON.stringify(props.userExpenseState));
         }
     }
 

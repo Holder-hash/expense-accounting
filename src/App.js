@@ -10,19 +10,17 @@ function App() {
     data: []
   })
   
-  useEffect(() => {
-    localStorage.setItem('userExpenseStorage', JSON.stringify(userExpenseState));
-  }, [userExpenseState])
+
   
   if (!localStorage.getItem('userExpenseStorage')) {
-    localStorage.setItem('userExpenseStorage', userExpenseState)
+    localStorage.setItem('userExpenseStorage', JSON.stringify(userExpenseState))
   }
 
   return (
     <div className="App">
       <Header />
       <main>
-        <ExpensePanel setUserExpenseState={setUserExpenseState}/>
+        <ExpensePanel setUserExpenseState={setUserExpenseState} userExpenseState={userExpenseState}/>
       </main>
     </div>
   );
