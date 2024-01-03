@@ -16,8 +16,11 @@ const ExpenseInput = (props) => {
 
     const expenseSubmit = (e) => {
         e.preventDefault();
-        storageLabels.push(expenseCategor);
-        
+        if (!storageLabels.includes(expenseCategor)) {
+            storageLabels.push(expenseCategor);
+        }
+
+
         if (expenseValue.current.value && expenseCategor) {
             storageData.push(expenseValue.current.value)
 
