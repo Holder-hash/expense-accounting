@@ -1,24 +1,22 @@
 import './App.css';
 import Header from './components/Header/Header.jsx';
 import ExpensePanel from './components/Expense-panel/ExpensePanel.jsx';
-import { useState } from 'react';
 
 function App() {
   
-  const [userExpenseState, setUserExpenseState] = useState({
-    labels: [],
-    data: []
-  })
-  
   if (!localStorage.getItem('userExpenseStorage')) {
-    localStorage.setItem('userExpenseStorage', JSON.stringify(userExpenseState))
+    localStorage.setItem('userExpenseStorage', JSON.stringify({
+      labels: [],
+      data: [],
+      background: []
+    }))
   }
 
   return (
     <div className="App">
       <Header />
       <main>
-        <ExpensePanel setUserExpenseState={setUserExpenseState} userExpenseState={userExpenseState}/>
+        <ExpensePanel />
       </main>
     </div>
   );
