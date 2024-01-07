@@ -1,22 +1,29 @@
 import './Expense-panel.scss';
 import ExpenseInput from './ExpenseInput/ExpenseInput.jsx';
 import ExpenseGraph from './ExpenseGraph/ExpenseGraph.jsx';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-const ExpensePanel = (props) => {
+const ExpensePanel = () => {
 
-    const [updateCounter, setUpdateCounter] = useState(0);
+    const [expenseData, setExpenseData] = useState({
+        labels: [],
+        data: [],
+        background: [],
+    })
 
-    // Эта функция будет обновлять компонент А
-    const forceUpdateA = () => {
-      setUpdateCounter(prevCounter => prevCounter + 1);
-    };
+    const onSubmit = (getExpenseData) => {
+        setExpenseData({
+            labels: getExpenseData.labels,
+            data: getExpenseData.data,
+            background: getExpenseData.background,
+        })
+    }
 
     return (
         <div className='expanse-panel__body'>
             <div className='expanse-panel__linse'>
-                <ExpenseGraph />
-                <ExpenseInput forceUpdateA={forceUpdateA}/>
+                <ExpenseGraph newExpense={expenseData}/>
+                <ExpenseInput onSubmit={onSubmit}/>
             </div>
         </div>
     )

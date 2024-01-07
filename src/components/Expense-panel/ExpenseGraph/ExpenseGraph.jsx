@@ -6,20 +6,37 @@ import { useEffect, useState } from 'react';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const ExpenseGraph = () => {
+const ExpenseGraph = (props) => {
+
+    const [expenseData, setExpenseData] = useState({
+        labels: [],
+        data: [],
+        background: []
+    })
 
     const storageState = localStorage.getItem('userExpenseStorage');
 
-    useEffect(() => {
-        pieChart.labels = JSON.parse(storageState).labels
-        pieChart.datasets[0].data = JSON.parse(storageState).data
-        pieChart.datasets[0].backgroundColor = JSON.parse(storageState).background
-        console.log(pieChart);
-    }, [storageState])
+    expenseData.labels = JSON.parse(storageState).labels;
+    expenseData.data = JSON.parse(storageState).data;
+    expenseData.background = JSON.parse(storageState).background;
 
+    pieChart.labels = expenseData.labels;
+    pieChart.datasets[0].data = expenseData.data;
+    pieChart.datasets[0].backgroundColor = expenseData.background;
+
+    useEffect(() => {
+        setExpenseData(prev => {
+            return {
+                labels: [...prev.labels, props.newExpense.labels],
+                data: [...prev.data, props.newExpense.data],
+                background: [...prev.background, props.newExpense.background]
+            }
+        })
+    }, [props.newExpense])
+    console.log(pieChart);
     return (
         <div className='expanse-graph__container'>
-            <Pie data={pieChart} style={{height: '95%'}}/>
+            <Pie data={pieChart} style={{height: '95%'}} redraw={true}/>
         </div>
     )
 }

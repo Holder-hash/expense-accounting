@@ -1,39 +1,43 @@
 import './ExpenseInput.scss';
 import categories from '../../../data/categories.json';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const ExpenseInput = (props) => {
 
     const expenseValue = useRef(null);
     const [expenseCategor, setExpenseCategory] = useState(null);
+    const [expenseData, setExpenseData] = useState(null)
     
     function CategoryChangeHandler(categoryData) {
         setExpenseCategory(() => categoryData);
-        console.log(expenseCategor);
     }
 
     let storageLabels = JSON.parse(localStorage.getItem('userExpenseStorage')).labels
     let storageData = JSON.parse(localStorage.getItem('userExpenseStorage')).data
     let storageBackground = JSON.parse(localStorage.getItem('userExpenseStorage')).background
 
+
     const expenseSubmit = (e) => {
         e.preventDefault();
         if (!storageLabels.includes(expenseCategor.label)) {
             storageLabels.push(expenseCategor.label);
             storageBackground.push(expenseCategor.color);
-            console.log(localStorage.getItem('userExpenseStorage'));
         }
-
+        
         if (expenseValue.current.value && expenseCategor) {
-            storageData.push(Number(expenseValue.current.value))
-
+            storageData.push(Number(expenseValue.current.value));
+            
             localStorage.setItem('userExpenseStorage', JSON.stringify({
                 labels: storageLabels,
                 data: storageData,
                 background: storageBackground
             }));
 
-            props.forceUpdateA();
+            props.onSubmit({
+                labels: expenseCategor.label,
+                data: Number(expenseValue.current.value),
+                background: expenseCategor.color
+            });
         }
     }
 
