@@ -1,12 +1,11 @@
 import './ExpenseInput.scss';
 import categories from '../../../data/categories.json';
-import { useEffect, useRef, useState } from 'react';
+import {useRef, useState } from 'react';
 
 const ExpenseInput = (props) => {
 
     const expenseValue = useRef(null);
     const [expenseCategor, setExpenseCategory] = useState(null);
-    const [expenseData, setExpenseData] = useState(null)
     
     function CategoryChangeHandler(categoryData) {
         setExpenseCategory(() => categoryData);
